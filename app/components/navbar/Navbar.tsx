@@ -22,7 +22,7 @@ const Navbar = () => {
                         <Logo />
                         <Search />
                         <UserMenu />
-                        <Modal />
+                        {/* <Modal onClose={} onSubmit={} actionLabel="" disabled /> */}
                     </div>
                 </Container>
             </div>

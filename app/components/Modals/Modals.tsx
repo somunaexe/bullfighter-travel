@@ -1,7 +1,9 @@
 'use client';
+
 import {useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
+
 interface ModalProps {
     isOpen?: boolean;
     onClose: () => void;
@@ -10,9 +12,9 @@ interface ModalProps {
     body?: React.ReactElement;
     footer?: React.ReactElement;
     actionLabel: string;
-    disabled: boolean;
+    disabled?: boolean;
     secondaryAction?: () => void;
-    secondaryLabel?: string;
+    secondaryActionLabel?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -25,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
     actionLabel,
     disabled,
     secondaryAction,
-    secondaryLabel
+    secondaryActionLabel
 }) => {
     const [showModal, setShowModal] = useState(isOpen);
     
@@ -148,7 +150,17 @@ const Modal: React.FC<ModalProps> = ({
                                 items-center
                                 gap-4
                                 w-full">
-                                   <Button label="My button" /> 
+                                    {secondaryAction && secondaryActionLabel && (
+                                        <Button 
+                                        outline
+                                        disabled={disabled}
+                                        label={secondaryActionLabel}
+                                        onClick={handleSecondaryAction} /> 
+                                        )}
+                                        <Button 
+                                        disabled={disabled}
+                                        label={actionLabel}
+                                        onClick={handleSubmit} />
                                 </div>
                             </div>
                         </div>
