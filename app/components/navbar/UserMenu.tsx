@@ -2,7 +2,15 @@
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
+import { useCallback, useState } from "react";
+
 const UserMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOpen = useCallback(() => {
+        setIsOpen((value) => !value);
+    }, []);
+
     return (
         <div className="relative">
             <div className="
@@ -25,7 +33,7 @@ const UserMenu = () => {
             ">
                 Airbnb your home
             </div>
-            <div onClick={() => {}}
+            <div onClick={toggleOpen}
             className="
             p-4
             md:py-1
